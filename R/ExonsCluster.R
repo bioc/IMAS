@@ -1,4 +1,4 @@
-ExonsCluster <- function(ASdb,GTFdb,Ncor=1){
+ExonsCluster <- function(ASdb,GTFdb,Ncor=1,txTable=NULL){
     sortEX <- function(test.range,outtype="mat"){
         over.ranges <- findOverlaps(test.range,test.range,select="all")
         over.ranges <- unique(as.matrix(over.ranges))
@@ -398,13 +398,14 @@ ExonsCluster <- function(ASdb,GTFdb,Ncor=1){
         pre.re
     }
     parm <- SnowParam(workers=Ncor,type="SOCK")
-    trans.intron.range <- intronsByTranscript(GTFdb)
     tx.cns <- c("TXCHROM","TXNAME","GENEID","TXSTART","TXEND","TXSTRAND")
-    txTable <- try(select(GTFdb,keys=names(trans.intron.range),
-        columns=tx.cns, keytype="TXID"),silent=TRUE)
-    txTable <- gsub(" ","",as.matrix(txTable))
-    trans.intron.range <- unlist(trans.intron.range)
-    called.packages <- c("GenomicRanges","GenomicFeatures")
+    if (!length(txTable)){
+        trans.intron.range <- intronsByTranscript(GTFdb)
+        txTable <- try(select(GTFdb,keys=names(trans.intron.range),
+            columns=tx.cns, keytype="TXID"),silent=TRUE)
+        txTable <- gsub(" ","",as.matrix(txTable))
+        trans.intron.range <- unlist(trans.intron.range)
+        }
     Alt.splice.result <- ASdb@SplicingModel
     e.ge <- NULL
     e.str <- NULL

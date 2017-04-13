@@ -8,7 +8,7 @@
 }
 \usage{
 
-    ExonsCluster(ASdb,GTFdb,Ncor=1)
+    ExonsCluster(ASdb,GTFdb,Ncor=1,txTable=NULL)
 }
 \arguments{
     \item{ASdb}{
@@ -19,6 +19,9 @@
     }
     \item{Ncor}{
         The number of cores for multi-threads function.
+    }
+    \item{txTable}{
+        The matrix of transcripts including transcript IDs, Ensembl gene names, Ensembl transcript names, transcript start sites, and transcript end sites.
     }
 }
 
