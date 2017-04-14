@@ -140,7 +140,7 @@ ExonsCluster <- function(ASdb,GTFdb,Ncor=1,txTable=NULL){
         spl.nums <- grep("Spl|spl",colnames(each.result))
         each.result <- rbind(each.result[,-spl.nums])
         rownames(each.result) <- seq_len(nrow(each.result))
-        ES.nms <- paste("ES",seq_len(nrow(each.re)),sep="")
+        ES.nms <- paste(alt.type,seq_len(nrow(each.re)),sep="")
         each.result <- cbind(Index=ES.nms,each.result)
         return (each.result)
     }
@@ -421,6 +421,8 @@ ExonsCluster <- function(ASdb,GTFdb,Ncor=1,txTable=NULL){
     IR.num <- NULL
     each.re <- NULL
     final.result <- NULL
+    A5SS.f.result <- NULL
+    A3SS.f.result <- NULL
     if (ncol(Alt.splice.result$ES) != 1){
         ES.gene <- unique(Alt.splice.result$ES[,"EnsID"])
     }
@@ -448,7 +450,7 @@ ExonsCluster <- function(ASdb,GTFdb,Ncor=1,txTable=NULL){
     }    
     if(any(seq_along(ASS.gene))){
         each.mat <- Alt.splice.result$ASS
-        each.re  <- bplapply(seq_along(ES.gene),mul.te,BPPARAM=parm,
+        each.re  <- bplapply(seq_along(ASS.gene),mul.te,BPPARAM=parm,
             Alt.gene=ASS.gene,AltTe=ASSAltTe)
         each.re <- do.call(rbind,each.re)
         if (length(each.re)){
@@ -458,7 +460,7 @@ ExonsCluster <- function(ASdb,GTFdb,Ncor=1,txTable=NULL){
     }
     if(any(seq_along(IR.gene))){
         each.mat <- Alt.splice.result$IR
-        each.re  <- bplapply(seq_along(ES.gene),mul.te,BPPARAM=parm,
+        each.re  <- bplapply(seq_along(IR.gene),mul.te,BPPARAM=parm,
             Alt.gene=IR.gene,AltTe=IRAltTe)
         each.re <- do.call(rbind,each.re)
         if (length(each.re)){
