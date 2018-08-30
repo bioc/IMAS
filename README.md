@@ -14,8 +14,9 @@ Finally, IMAS provides a function for visualizing all identiﬁed AS transcript 
 ##Installation
 To install IMAS package, start R and enter:
 ``` r
-source("https://bioconductor.org/biocLite.R")
-biocLite("IMAS")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("IMAS")
 ```
 To view vignette of IMAS, start R and enter:
 ``` r

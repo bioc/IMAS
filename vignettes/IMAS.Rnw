@@ -109,8 +109,9 @@ For this analysis, load the following data and an object from \Biocpkg{IMAS}, th
 \\
 Installation of \Biocpkg{IMAS} package :
 <<Installation of IMAS,results=hide,eval=FALSE>>=
-source("https://bioconductor.org/biocLite.R")
-biocLite("IMAS")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("IMAS")
 @
 Loading \Biocpkg{IMAS} package :
 <<loading Names package,results=hide>>=
