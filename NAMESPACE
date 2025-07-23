@@ -22,7 +22,7 @@ importFrom(GenomicAlignments,readGAlignments,extractAlignmentRangesOnReference,n
 importFrom(GenomicRanges,GRanges,elementMetadata,reduce,disjoin)
 importFrom(IRanges,IRanges,findOverlaps,start,end)
 importFrom(BiocGenerics,strand,unlist)
-importFrom(GenomeInfoDb,seqinfo,seqlevels,seqnames)
+importFrom(Seqinfo,seqinfo,seqlevels,seqnames)
 
 importFrom(utils,write.table,methods,combn)
 

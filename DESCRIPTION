@@ -1,14 +1,14 @@
 Package: IMAS
 Type: Package
 Title: Integrative analysis of Multi-omics data for Alternative Splicing
-Version: 1.33.0
+Version: 1.33.1
 Author: Seonggyun Han, Younghee Lee
 Maintainer: Seonggyun Han <hangost@ssu.ac.kr>
 Description: Integrative analysis of Multi-omics data for Alternative splicing.
 License: GPL-2
 Depends: R (> 3.0.0),GenomicFeatures, ggplot2, IVAS
 Imports: doParallel, lme4, BiocGenerics, GenomicRanges, IRanges,
-         foreach, AnnotationDbi, S4Vectors, GenomeInfoDb, stats,
+         foreach, AnnotationDbi, S4Vectors, Seqinfo, stats,
          ggfortify, grDevices, methods, Matrix, utils, graphics,
          gridExtra, grid, lattice, Rsamtools, survival, BiocParallel,
          GenomicAlignments, parallel
